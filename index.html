@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="BLAST excercises" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Ignacio Cassol" />
+
+<meta name="date" content="2021-09-26" />
+
+
+<meta name="description" content="BLAST excercises">
+
+<title>BLAST excercises</title>
+
+<script src="libs/header-attrs/header-attrs.js"></script>
+<link href="libs/tufte-css/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+<script>
+function copy_link(id) {
+  var dummy = document.createElement('input'),
+  text = window.location.href.split(/[?#]/)[0] + '#' + id;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand('copy');
+  document.body.removeChild(dummy);
+  
+  var tooltip = document.getElementById(id + '-tooltip');
+  tooltip.innerHTML = 'Copied!';
+}
+
+function reset_tooltip(id) {
+  var tooltip = document.getElementById(id);
+  tooltip.innerHTML = 'Copy link';
+}
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">BLAST excercises<p><p class="author">Ignacio Cassol</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="">Introduction</a>
+<a href="">Ex1 - Identify unkown sequences</a>
+<a href="">Ex2 - Investigating sets of sequences</a>
+<a href="">Ex3 - Cystic fibrosis scope</a>
+<a href="">Ex4 - Cystic fibrosis</a>
+<a href="">Ex5 - Nocturnal asthma</a>
+<a href="">Ex6 - Pulmonary artery hypertension</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!--bookdown:title:end--><!--bookdown:title:start--><html><body>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This hands-on is based on “Exercises in Data Retrieval and Using Blast Searches,” developed by Susan Jean Johns, <a href="http://www.rbvi.ucsf.edu/Outreach/Workshops/BayGenomics_traveling_tutorial/Blast_Exercises_v5_help.html">UCSF Department of Pharmaceutical Chemistry</a>.</p>
+<p>[The NCBI web site and its parts are updated periodically, therefore results given below may change with time.]</p>
+<p>It is not supposed that the student should be able to resolve the items with no assistant. That is why each statement contains it own “step by step” guidance. The most important issue is that the student understand what and why it is doing when replaying the solution. In case you have doubts or need justification, we appreciate you call/contact the teachers.</p>
+<p>We suggest not to copy/paste deliriously from the hands-on to your web browser. Take your time and be critic of each step.</p>
+</div>
+<div id="ex1---identify-unkown-sequences" class="section level1">
+<h1>Ex1 - Identify unkown sequences</h1>
+<p>The following sequence was obtained from a sequencing experiment and the lab leader <strong>asked you to identify from where does it come from</strong>.</p>
+<pre><code>&gt;Unknown sequence 1
+AAATGAGTTAATAGAATCTTTACAAATAAGAATATACACTTCTGCTTAGGATGATAATTGGAGGCAAGTGAATCCTGAGCGTGATTTGATAATGACCTAATAATGATGGGTTTTATTTCCAGACTTCACTTCTAATGGTGATTATGGGAGAACTGGAGCCTTCAGAGGGTAAAATTAAGCACAGTGGAAGAATTTCATTCTGTTCTCAGTTTTCCTGGATTATGCCTGGCACCATTAAAGAAAATATCATCTTTGGTGTTTCCTATGATGAATATAGATACAGAAGCGTCATCAAAGCATGCCAACTAGAAGAGGTAAGAAACTATGTGAAAACTTTTTGATTATGCATATGAACCCTTCACACTACCCAAATTATATATTTGGCTCCATATTCAATCGGTTAGTCTACATATATTTATGTTTCCTCTATGGGTAAGCTACTGTGAATGGATCAATTAATAAAACACATGACCTATGCTTTAAGAAGCTTGCAAACACATGAA</code></pre>
+<p>Based on the BLAST result:</p>
+<p>1.a) <em>what is that sequence related to?</em></p>
+<p>1.b) <em>to which organism?</em></p>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-1" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')"></span>
+</p>
+<div id="sol-body-1" class="solution-body" style="display: none;">
+<ul>
+<li><p>Go to <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> and select the appropriate type of BLAST.</p></li>
+<li><p>Copy and paste the sequence including “&gt;….”</p></li>
+<li><p>Click on the “BLAST” button and wait for the results. BLAST is usually fairly quick for short sequences, but should still take a few seconds.</p></li>
+</ul>
+<p>In the result you should find and conclude that the sequence corresponds to:</p>
+<ul>
+<li>CF transmembrane conductance regulator (CFTR), RefSeqGene (LRG_663) on chromosome 7</li>
+<li>Homo sapiens</li>
+</ul>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="ex2---investigating-sets-of-sequences" class="section level1">
+<h1>Ex2 - Investigating sets of sequences</h1>
+<p>The following sets of sequences were obtained from a sequencing experiment:</p>
+<pre><code>&gt;Sequence1a
+GTAATGTACATAACATTAATGTAATAAAGA
+&gt;Sequence1b
+ATCACGAGCTTAATTACCATGCCGCGTGAAACCAGCAACC
+&gt;Sequence1c
+ATGGACTAATGGCTAATCAGCCCATGCTCACACATA</code></pre>
+<p>Answer the following questions:</p>
+<p>2.a) <em>What do these sequences have in common?</em></p>
+<p>2.b) <em>What is your best guess about the original purpose of this experiment?</em></p>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-2" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')"></span>
+</p>
+<div id="sol-body-2" class="solution-body" style="display: none;">
+<ul>
+<li><p>Copy and paste the three sequences in <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a>. Paste the three seqs in the same box. The option <code>Align two or more sequences</code> must be UNMARKED because we want to look for a common ancestor.</p></li>
+<li><p>Click on the “BLAST” button and wait for the results.</p></li>
+</ul>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict10.png?raw=true"></p>
+<p>Previous screenshot correspond to <code>Sequence1a</code> (check out in <code>Results for:</code> field, in the header of the report).</p>
+<ul>
+<li>Click on this name to scroll the others two sequences. Change it to the others two sequences, compare them and conclude.</li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<p>The three sequences are parts of the <em>0876 mitochondrial DNA of “Bos taurus”</em>.</p>
+<p><strong>How to get to this conclusion?</strong> You have to look for an identical (o very similar) hit in the three reports. Let do this task for the 1st sequence (shown in previous screenshot).</p>
+<ul>
+<li>Click on the second hit (<em>“Bos indicus x Bos taurus 0876 mitochondrial DNA, D-loop, partial sequence”</em>). In this hit consider that the query has a perfect match with the region of the subject from 280aa to 309aa from <code>LC412674.1</code> sequence.</li>
+</ul>
+<p>Repeat previous task on the other two sequences. You have to take care of selecting the <em>mitochondrial DNA 0876</em>. You should conclude that each sequence of the query is a part of the same sequence (LC412674.1, with 708aa).</p>
+<p>You also have to check the quality of each hit: there should not be problems. But remember to see the E-value, the Query cover, the percent identity</p>
+<div class="msmb-solution">
+<p class="solution-begin">
+Extra question:
+</p>
+<div class="solution-body">
+<p>
+Did you ask to yourself why the solution asked you to click on the second hit of the 1st sequence? Why not the 1st hit? Discuss this issue with your colleagues and share the conclusion.
+</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="ex3---cystic-fibrosis-scope" class="section level1">
+<h1>Ex3 - Cystic fibrosis scope</h1>
+<p>First of all, explore in internet about <em>Cystic fibrosis</em>. You should consider to know, for example, if is inherited (and how), if it is a genetic disorder. If so, with genes are involved. Symptoms and what organs does it affect.</p>
+<div class="msmb-solution">
+<p class="solution-begin">
+To remember:
+</p>
+<div class="solution-body">
+<p>
+Which the terms applied to a desease caused by the mutation of one gene? Is the <em>cystic fibrosis</em> one of them?.
+</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>What is the scope of information available at NCBI on <strong>cystic fibrosis in humans</strong>?</p>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-5" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-5', 'sol-start-5')"></span>
+</p>
+<div id="sol-body-5" class="solution-body" style="display: none;">
+<ul>
+<li>Go to <a href="http://www.ncbi.nlm.nih.gov">NCBI</a> and enter “cystic fibrosis” with <code>Search</code> setted with “All databases.”</li>
+</ul>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict1.png?raw=true"></p>
+<p>We will be interested in the <strong>OMIM database</strong> (227 results). <strong><em>OMIM is the catalog of human genes and genetic disorders.</em></strong></p>
+<p>Have a look to <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=OMIM">the OMIM background information</a>.</p>
+<p>You can click on some OMIMs result to see some related paper.</p>
+<p>The answer could be the numbers of OMIMs but it is not the unique one. You can include, for example, the number of PubMed articles availables or the number of genes annotated to this desease.</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="ex4---cystic-fibrosis" class="section level1">
+<h1>Ex4 - Cystic fibrosis</h1>
+<p>Besides the <strong>cystic fibrosis transmembrane conductance regulator gene</strong> (CFTR):</p>
+<p>4.a) <em>what other genes are associated with <strong>cystic fibrosis</strong> in humans</em> and</p>
+<p>4.b) <em>what is their relationship to the disease?</em></p>
+<div class="msmb-solution">
+<p class="solution-begin">
+Hints:
+</p>
+<div class="solution-body">
+<p>
+Perform an <a href="http://www.ncbi.nlm.nih.gov">Entrez Gene search</a> to find the other genes and their function or relationship to the disease.
+</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-7" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-7', 'sol-start-7')"></span>
+</p>
+<div id="sol-body-7" class="solution-body" style="display: none;">
+<ul>
+<li><p>Go to <a href="http://www.ncbi.nlm.nih.gov">BLAST</a> , change the Search option from “All Databases” to “Gene” using the pull down menu.</p></li>
+<li><p>Enter “homo sapiens cystic fibrosis” in the for box.</p></li>
+</ul>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict2.png?raw=true"></p>
+<ul>
+<li>Click on at least five diverse hits below the CFTR gene, finding out their relationship to cystic fibrosis. Ignore any gene that doesn’t have a NCBI Reference Sequences (RefSeq) section.</li>
+</ul>
+<p>Following you can observe how one of the result page looks like:</p>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict3.png?raw=true"></p>
+<ul>
+<li>Check out the “Gene References into Function” section of the “Bibliography” part of the page. No hits, click on the “PUBMED links” in this section and scan through the titles for mentions of <strong><em>cystic fibrosis</em></strong>.</li>
+</ul>
+<p><em>Possible Answers:</em></p>
+<p><code>S100A8</code> - cystic fibrosis antigen</p>
+<p><code>TGFB1</code> - mutations modify severity of pulmonary disease in cystic fibrosis patients
+- protein and expression correlates with portal tracts showing histological abnormalities associated with cystic fibrosis liver disease</p>
+<p><code>GOPC - CFTR</code> binding</p>
+<p><code>ADRB2 - 2002</code> polymorphisms contribute to clinical severity and disease progression in cystic fibrosis</p>
+<p><code>2005</code> transfected beta3 not beta2-adrenergic receptors regulates CFTR activity via new pathway</p>
+<p><code>SLC9A3R1 – 6/2007</code> plays a role in the turnover of CFTR at the cell surface
+<code>5/2007</code> modulation of the expression of CFTR protein partners, like NHE-RF1, can rescue sequence-deleted CFTR activity</p>
+<p><code>ABCB1</code> - model to study CFTR mutation impacts and possible treatment agent</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="ex5---nocturnal-asthma" class="section level1">
+<h1>Ex5 - Nocturnal asthma</h1>
+<p>5.a) <em><code>Nocturnal asthma</code> is associated with what gene in humans?</em></p>
+<p>5.b) <em>What are the RefSeq codes for this gene’s mRNA and protein sequences?</em></p>
+<p>5.c) On the GenBank accession pages, data can be displayed in different formats. <em>What is the difference between default and FASTA formats for these sequence files?</em></p>
+<p>5.d) <em>How can these RefSeq codes be used to search for similar sequences in other species?</em></p>
+<p>5.e) <em>What are the results of such a search?</em></p>
+<div class="msmb-solution">
+<p class="solution-begin">
+Hints:
+</p>
+<div class="solution-body">
+<p>
+Do a Gene search at <a href="http://www.ncbi.nlm.nih.gov">NCBI</a>, record the codes. Compare the formats of the mRNA and protein sequences. Run a <a href="http://blast.ncbi.nlm.nih.gov">BLAST search</a>.
+</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-9" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-9', 'sol-start-9')"></span>
+</p>
+<div id="sol-body-9" class="solution-body" style="display: none;">
+<ul>
+<li><p>Go to <a href="http://www.ncbi.nlm.nih.gov">NCBI</a>, change the “All Databases” Search option to “Gene” using the pull down menu. Enter <em>“homo sapiens nocturnal asthma”</em> in the for box.</p></li>
+<li><p>Check the resulting hits to insure that the summary information on the gene mentions that various types of changes in this gene are associated with the disease. Let explore, for example, gene <code>ADRB2</code>:</p></li>
+</ul>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict4.png?raw=true"></p>
+<p>At the end of the “Summary” section you should find a mention to the disease.</p>
+<ul>
+<li><p>Scroll down the page to the “NCBI Reference Sequences” (RefSeq) section. Record the mRNA sequence and Product (protein) codes. Namely, get the following codes:</p></li>
+<li><p>mRNA Sequence <code>NM_000024</code></p></li>
+<li><p>Product (protein) <code>NP_000015</code></p></li>
+<li><p>Click on the mRNA code (<code>NM_000024</code>) to see the data on the actual mRNA sequence data. Scroll down the page taking in the format of the information presented.</p></li>
+<li><p>Scroll back to the top of the page and change the Display option from GenBank to FASTA. The format automatically changes. Note the difference. FASTA format is the sequence format required by many database searching programs.</p></li>
+<li><p>Click back to the Entrez Gene page and repeat this process with the protein code (<code>NP_000015</code>).</p></li>
+<li><p>Let return to BLAST page, click on for Protein BLAST. Enter the protein code (<code>np_000015</code>) in the box.</p></li>
+<li><p>Go to the “Choose Search Set” section of the page and start to enter the term <code>Vertebrata</code> into the “Organism” box. Click on the “BLAST” button.</p></li>
+</ul>
+<p>Once the job is finished we suggest to have a look to:</p>
+<ul>
+<li>the “MSA viewer.” You should understand what information is provided in the section.</li>
+</ul>
+<p>5.f) Click on “Graphic Summary.” You will find a caption that states <em>“Putative conserved domains have been detected”</em>: <em>explore in internet what does it means</em>: it’s important.</p>
+<ul>
+<li>Click on the bar “Specific hits or Superfamilies”</li>
+</ul>
+<p>5.g) <em>How many domains are conserved?</em></p>
+<p>5.h) Click on the <code>7tm_1</code> domain. <em>Which is the name of the domain?</em> We suggest to click on it to have a look.</p>
+<p>Important data you should identify: this signature is located in residues 50 to 326 of the sequence.</p>
+<p>Let go back to the BLAST page result and let have a look to the “Sequences producing significant alignments” list.</p>
+<p><strong>Some theory reminder tips:</strong></p>
+<ul>
+<li><p>Scores are based on the length of the query sequence and the size of the database. Short sequences will never produce great scores. To get a <code>E value</code> of 0.0 requires a match of at least 330 characters. A very long sequence could easily have a match this long and still not have a match that covers a significant portion of the query sequence. Always look at the resulting alignment. The mathematics of the process can sometimes result in the strange ordering of hits.</p></li>
+<li><p><code>E value</code>: The E value (expected value) is a number that describes how many times you
+would expect a match by chance in a database of that size. The lower the E value is,
+the more significant the match.</p></li>
+<li><p>Notice that there are over 30 hits with an <code>E value</code> of 0.0 at the top of this list and that the protein code entered is at the top of the list. There are about 130 hits in the list which mention <code>ADBR2, beta-2 adrenergic receptor</code> or variations thereof before sequence description changes to something else. The first 12 hits are all from man with from 0 to 2 mismatches in the alignment.</p></li>
+<li><p>NCBI used to make an effort to remove redundant sequences, but the size of the database increased to such an extent that it was no longer possible to do this quickly enough so that it wouldn’t impact the processing of new data.</p></li>
+<li><p>When an accession code begins with <code>XP_</code>, it means that the <strong>data is the results of an automated analysis process</strong>. This situation usually occurs when a genome sequencing project is first being analyzed. <em>These sequences have not been checked for accuracy and can be much longer or shorter than their homologs from more mature genome studies</em>. These sequences usually have their description start with <code>PREDICTED:</code>.</p></li>
+</ul>
+<p>Answers:</p>
+<p>gene - <code>ADBR2 adrenergic, beta-2-, receptor, surface</code></p>
+<p>RefSeq codes: mRNA Sequence <code>NM_000024</code>
+Product (protein) <code>NP_000015</code></p>
+<p>FASTA format is very concise, limited to the actual sequence and an identification line that starts with a &gt; symbol. The default format is very verbose, giving all sorts of reference details about the sequence and a version of the sequence that is more easily read by the user.</p>
+<p>BLAST searching allows for different types of data entry including the use of accession codes (such as a RefSeq accession code).</p>
+<p><code>ADBR2</code> contains the <code>7tm_1</code> conserved domain signature which is highly conserved across species.</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="ex6---pulmonary-artery-hypertension" class="section level1">
+<h1>Ex6 - Pulmonary artery hypertension</h1>
+<p>Find proteins that are known to contribute to <strong>pulmonary artery hypertension</strong> and determine if animal models exist in which the disease can be studied. Can a full length lupus protein sequence be found?</p>
+<div class="msmb-solution">
+<p class="solution-begin">
+Hints:
+</p>
+<div class="solution-body">
+<p>
+Determine the proteins associated with the disease by doing an Entrez protein search Choose the top hit and check its length. Use the sequence in a NCBI protein BLAST search to try to find possible model animals. Also use this sequence to find dog sequences. Compare any found dog sequence(s) with the human sequence you started with.
+</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-11" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-11', 'sol-start-11')"></span>
+</p>
+<div id="sol-body-11" class="solution-body" style="display: none;">
+<ul>
+<li>Go to <a href="http://www.ncbi.nlm.nih.gov">NCBI</a>, change the “All Databases” option to “Protein” and enter the term “pulmonary artery hypertension homo sapiens” into the box</li>
+</ul>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict5.png?raw=true"></p>
+<p>You will find, at least, 41 items. In this step we have to be very careful because we can select wrong options:</p>
+<ul>
+<li><p>You should note that many items are proteins annotated to several isoforms (of the same gene). For example: <code>cGMP</code> is the gene and you should read <em>A isoform 3</em>, <em>A isform 4</em>, and so on) in several rows of the report.</p></li>
+<li><p>You should identify entries with the same description or/and the same protein length (<code>322 aa</code> protein, for example).</p></li>
+<li><p>You should suspect entries with the same protein length.</p></li>
+<li><p>You must explore the first items of the list in order to ensure that this protein has some relationship to pulmonary artery hypertension.</p></li>
+<li><p>After exploring the list, we will select, for example, the protein <code>NP_001277119</code> (<em>myeloid-associated differentiation marker [Homo sapiens]</em>)</p></li>
+<li><p>To obtain the sequence of <code>NP_001277119.1</code> for the BLAST search, change the <em>Display</em> option of the page to FASTA format by using the pull down menu.</p></li>
+<li><p>Copy the data (in FASTA format) to your clipboard (remember to include the “&gt;” and continuing to the end of the sequence).</p></li>
+<li><p>Go to <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> and paste your clipboard. Be sure that the “Choose Search Set” parameter are at their default values (database nr and organism blank). Click the “BLAST” button.</p></li>
+</ul>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict6.png?raw=true"></p>
+<p><strong>Some criteria to checking out the best hits to determine the quality of the matches and the species results</strong>:</p>
+<ul>
+<li>The <code>length of the residues</code> is important. The larger the better.</li>
+<li>The <code>E value</code> and the <code>percent identity</code> is also important.</li>
+</ul>
+<p>According to previous criteria we could select the following animals:</p>
+<ul>
+<li>[Pan paniscus] Primate</li>
+<li>[Chlorocebus sabaeus] Primate</li>
+<li>[Hylobates moloch] Primate</li>
+<li>[Mandrillus leucophaeus] Primate</li>
+<li>[Nomascus leucogenys] Primate</li>
+<li>[Piliocolobus tephrosceles] Primate</li>
+<li>[Pongo abelii] Orangutan</li>
+<li>[Rhinopithecus roxellana] Monkey</li>
+</ul>
+<p>Let give a step forward, <em>previous list is not really very useful</em> because all animals are primates (or very related) and the statement ask us for a lupus. <strong>Go on searching other animals</strong> (not closely related to primates).</p>
+<ul>
+<li>We will select the <em>“Canis lupus familiaris”</em> (in the middle of the list): “myeloid-associated differentiation marker” (<code>XP_005616179.1</code>).</li>
+</ul>
+<p>Let work with the selected <em>wolf</em> specie (<em>“Canis lupus familiaris”</em>). Return to the blastp suite submission page and change the <em>“Organism”</em> option in the <em>“Choose Search Set”</em> section from blank to <strong>“Canis lupus”</strong> by starting to enter this term into the field. Highlight the term when it appears on the list.</p>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict7.png?raw=true"></p>
+<p>Confirm that the hits correspond to “lupus” and determine how close its lengths are to that of the starting human sequence. The first one looks the most likely:</p>
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict8.png?raw=true"></p>
+Looking at these results we do not find any area (gap/region) to be concerned. There could be a problem if, for example, we would find gaps. Let see and example of a gap to take into account:
+<p align="center">
+<img src="https://github.com/icassol/platform-samples/blob/master/Pict9.png?raw=true"></p>
+<p>The 15 residues (gap) starting at position 72 would need to be looked at to find out if there are any known functions or features associated with this region in the human sequence. If so, then this lupus protein wouldn’t be a good study model.</p>
+<p>As conclusion we declare that all previous animal are good target to study this gene and its function but let add a short comments, and the “Canis lupus familiaris” is specially good.</p>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+</body></html>
+
+<p style="text-align: center;">
+</p>
+<p class="build-date">Page built: 
+2021-09-26
+ using 
+R version 4.1.1 (2021-08-10)
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>
